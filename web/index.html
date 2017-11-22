@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>TEST INCLUSION</title>
+    <script src="jquery-3.2.1.min.js"></script>    
+    <script>
+        $.ajax({
+            url: '/products',
+            success: function (data) {
+                for(var i in data.products) {
+                    $('#tblProducts').append("<tr>" +    
+                        "<td>" + data.products[i].ID + "</td>" +
+                        "<td>" + data.products[i].Nombre + "</td>" +
+                        "<td>" + data.products[i].Apellido + "</td>" +
+                        "<td>" + data.products[i].DNI + "</td>" +
+                        "</tr>"
+                    );
+                };
+            },
+            error: function () {
+                console.log('error');
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>Listado de productos</h1>
+    
+    <button>ORDENAR</button>
+    <button>REFRESCAR</button>
+    <label>Buscar...</label>
+    <input></input>
+    <button>Buscar</button>
+
+    <table id="tblProducts">
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>DNI</th>
+    </table>
+</body>
+</html>
