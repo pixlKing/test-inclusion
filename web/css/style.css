@@ -1,0 +1,7 @@
+/* Override bootstrap table styles */
+.table {
+	font-size: 14px;
+}
+.table th {
+	width: 25%;
+}

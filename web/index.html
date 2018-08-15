@@ -1,41 +1,42 @@
-<html>
+<html ng-app="app">
 <head>
     <title>TEST INCLUSION</title>
-    <script src="jquery-3.2.1.min.js"></script>    
-    <script>
-        $.ajax({
-            url: '/products',
-            success: function (data) {
-                for(var i in data.products) {
-                    $('#tblProducts').append("<tr>" +    
-                        "<td>" + data.products[i].ID + "</td>" +
-                        "<td>" + data.products[i].Nombre + "</td>" +
-                        "<td>" + data.products[i].Apellido + "</td>" +
-                        "<td>" + data.products[i].DNI + "</td>" +
-                        "</tr>"
-                    );
-                };
-            },
-            error: function () {
-                console.log('error');
-            }
-        });
-    </script>
-</head>
-<body>
-    <h1>Listado de productos</h1>
-    
-    <button>ORDENAR</button>
-    <button>REFRESCAR</button>
-    <label>Buscar...</label>
-    <input></input>
-    <button>Buscar</button>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon"          href="img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 
-    <table id="tblProducts">
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>DNI</th>
-    </table>
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- Libs -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+    <!-- Js -->
+    <script src="js/filters.js"></script>
+</head>
+<body ng-controller="appController">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+
+                <h3 class="mt-5">Listado de productos</h3>
+
+                <form class="filters form-inline my-3">
+                    <div class="form-group">
+                        <button class="btn btn-primary" ng-click="order=!order" title="Ordenar por nombre" type="button">Ordenar</button>
+                    </div>
+                    <div class="form-group mx-3">
+                        <button class="btn btn-primary" ng-click="refresh()" type="button">Refrescar</button>
+                    </div>
+                    <div class="input-group">
+                        <input class="form-control" ng-model="searchString" placeholder="Buscar..." type="text" />
+                    </div>
+                </form>
+
+                <ng-include src="'components/table.html'"></ng-include>
+
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

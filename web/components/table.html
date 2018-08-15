@@ -1,0 +1,16 @@
+<table class="table table-hover col-lg-8">
+    <thead class="thead-light">
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>DNI</th>
+    </thead>
+    <tbody>
+        <tr ng-repeat="product in products | orderBy: order ? 'Nombre' : '' | searchFor:searchString">
+            <td>{{product.ID}}</td>
+            <td>{{product.Nombre}}</td>
+            <td>{{product.Apellido}}</td>
+            <td>{{product.DNI}}</td>
+        </tr>
+    </tbody>
+</table>
